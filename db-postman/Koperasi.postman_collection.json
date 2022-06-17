@@ -1,0 +1,922 @@
+{
+	"info": {
+		"_postman_id": "fe5b33ce-3bb9-498f-a224-f535a6d68450",
+		"name": "Koperasi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "624374"
+	},
+	"item": [
+		{
+			"name": "Setting",
+			"item": [
+				{
+					"name": "Get Setting",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cms",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{_url}}/api/master_data",
+							"host": [
+								"{{_url}}"
+							],
+							"path": [
+								"api",
+								"master_data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Setting",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "suku_bunga",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "send_mail",
+									"value": "cooljek@devs.andtechnology.me",
+									"type": "text"
+								},
+								{
+									"key": "mail_pass",
+									"value": "i-Z!$$vi^RTg",
+									"type": "text"
+								},
+								{
+									"key": "content_forgotPass",
+									"value": "[#name#] <br/> [#email#] <br/> [#new_pass#]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{_url}}/upd_setting",
+							"host": [
+								"{{_url}}"
+							],
+							"path": [
+								"upd_setting"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaksi",
+			"item": [
+				{
+					"name": "Pengajuan Pinjaman",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTQ0ODgyOSwiZXhwIjoxNjU1NDUyNDI5LCJuYmYiOjE2NTU0NDg4MjksImp0aSI6ImV3Wm15dVFUYUtoVG9jYXAiLCJzdWIiOjMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.WTNTs18SblVR1o6roQBpxNNJ1JWRp79SSAvc1dwL74U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nominal",
+									"value": "80000000",
+									"type": "text"
+								},
+								{
+									"key": "suku_bunga",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "biaya_adm",
+									"value": "6000",
+									"type": "text"
+								},
+								{
+									"key": "lama_angsuran",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{_url}}/api/submit_pinjaman",
+							"host": [
+								"{{_url}}"
+							],
+							"path": [
+								"api",
+								"submit_pinjaman"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve/Reject Pinjaman",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTQwMDM1MSwiZXhwIjoxNjU1NDAzOTUxLCJuYmYiOjE2NTU0MDAzNTEsImp0aSI6IkdGbmFPUHNNd0RpNGozeGUiLCJzdWIiOjMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._HcjcxE-2QWVOX1GOJPI6tVnf6iGTTgOaIf-VWVOdl8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "2",
+									"description": "4 => Reject, 2 => Approve",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{_url}}/api/upd_status",
+							"host": [
+								"{{_url}}"
+							],
+							"path": [
+								"api",
+								"upd_status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pinjaman Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTQ0NjU0MiwiZXhwIjoxNjU1NDUwMTQyLCJuYmYiOjE2NTU0NDY1NDIsImp0aSI6IjFhTGpadjZTQ0RyVTMxdkwiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.OpMdggwQEPFT9qgH4bs0l6-NCuLa69LQAl5yUh9tYLE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{_url}}/api/pinjaman_detail",
+							"host": [
+								"{{_url}}"
+							],
+							"path": [
+								"api",
+								"pinjaman_detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Cicilan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTQwNDE4NSwiZXhwIjoxNjU1NDA3Nzg1LCJuYmYiOjE2NTU0MDQxODUsImp0aSI6IktmZHNNVUpJNllqWk15b1YiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3PD_7Mt6mdX8_vyqXRqlbgV167pdKT2B6cHG_BgBVhc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{_url}}/api/submit_cicilan",
+							"host": [
+								"{{_url}}"
+							],
+							"path": [
+								"api",
+								"submit_cicilan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pinjaman",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTQwNDE4NSwiZXhwIjoxNjU1NDA3Nzg1LCJuYmYiOjE2NTU0MDQxODUsImp0aSI6IktmZHNNVUpJNllqWk15b1YiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3PD_7Mt6mdX8_vyqXRqlbgV167pdKT2B6cHG_BgBVhc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "per_page",
+									"value": "10",
+									"description": "10 => show 10 data",
+									"type": "text"
+								},
+								{
+									"key": "keyword",
+									"value": "YNS-202206170026-2",
+									"type": "text"
+								},
+								{
+									"key": "page_number",
+									"value": "2",
+									"description": "1 => 1 * per page",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sort_order",
+									"value": "asc",
+									"type": "text"
+								},
+								{
+									"key": "sort_column",
+									"value": "id",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "1 => Waiting approve, 4 => Reject, 2 => Approve, 3 => Lunas",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{_url}}/api/pinjaman",
+							"host": [
+								"{{_url}}"
+							],
+							"path": [
+								"api",
+								"pinjaman"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Dashboard Admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTQzNTU0NywiZXhwIjoxNjU1NDM5MTQ3LCJuYmYiOjE2NTU0MzU1NDcsImp0aSI6ImFSZmhYcnZhaTFqd2NDZlIiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.sH1JBypZBO3OBG7wJYybfZiiZ8pBYyVcbufS4zhM6wg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{_url}}/api/get_dashboard",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"get_dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dashboard Agen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_distributor",
+							"value": "30",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/dist_dashboard",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"dist_dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Anggota",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTM5ODM0OSwiZXhwIjoxNjU1NDAxOTQ5LCJuYmYiOjE2NTUzOTgzNDksImp0aSI6Ilo0UVdsaGhENHdsYzVOZTAiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KUoEnnf3jIkk3Mo7yV0j8FJa42IoBQVELc7nFeXcJnM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "per_page",
+							"value": "10",
+							"description": "10 => show 10 data",
+							"type": "text"
+						},
+						{
+							"key": "keyword",
+							"value": "tsadf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "page_number",
+							"value": "2",
+							"description": "1 => 1 * per page",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "sort_order",
+							"value": "asc",
+							"type": "text"
+						},
+						{
+							"key": "sort_column",
+							"value": "name",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "3",
+							"description": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/users",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Agen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "per_page",
+							"value": "10",
+							"description": "10 => show 10 data",
+							"type": "text"
+						},
+						{
+							"key": "keyword",
+							"value": "tsadf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "page_number",
+							"value": "2",
+							"description": "1 => 1 * per page",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "sort_order",
+							"value": "asc",
+							"type": "text"
+						},
+						{
+							"key": "sort_column",
+							"value": "name",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/users",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Data Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/login",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Daa Agen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "agen@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/login",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Data Anggota",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "anggota@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/login",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Admin",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "1",
+							"description": "1 => Admin",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "admin@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "08777",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "1",
+							"description": "id_user yang login",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/register",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Agen",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTM5ODM0OSwiZXhwIjoxNjU1NDAxOTQ5LCJuYmYiOjE2NTUzOTgzNDksImp0aSI6Ilo0UVdsaGhENHdsYzVOZTAiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KUoEnnf3jIkk3Mo7yV0j8FJa42IoBQVELc7nFeXcJnM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Agen",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "2",
+							"description": "2 => Agen",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "agen@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "08777",
+							"type": "text"
+						},
+						{
+							"key": "photo_ktp",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "122334",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/register",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Anggota",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTQwMDMxMiwiZXhwIjoxNjU1NDAzOTEyLCJuYmYiOjE2NTU0MDAzMTIsImp0aSI6IjJoN2E3cjZyc2YxdFNvRDUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.inS33mL5pws4EsyGHZOP9ZblZAYuekeKrQawE3L4aI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "3",
+							"description": "3 => Anggota",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "anggota@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "08777",
+							"type": "text"
+						},
+						{
+							"key": "photo_ktp",
+							"type": "file",
+							"src": "/C:/Users/Yansen/Pictures/Aukey 74.5/2.jpg"
+						},
+						{
+							"key": "nik",
+							"value": "1111",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/register",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get My Profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTM5MDk5OCwiZXhwIjoxNjU1Mzk0NTk4LCJuYmYiOjE2NTUzOTA5OTgsImp0aSI6IlQ2VlA5ZlBjSElKdUdMQWYiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.NuBurH6Qm2j-hf0SsQJMQx_u-swT_itgOpErZcpZzpg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_user",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/profile",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2tvcGVyYXNpX3lhbnNlblwvYXBpXC9sb2dpbiIsImlhdCI6MTY1NTM5MDk5OCwiZXhwIjoxNjU1Mzk0NTk4LCJuYmYiOjE2NTUzOTA5OTgsImp0aSI6IlQ2VlA5ZlBjSElKdUdMQWYiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.NuBurH6Qm2j-hf0SsQJMQx_u-swT_itgOpErZcpZzpg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_user",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{_url}}/api/profile",
+					"host": [
+						"{{_url}}"
+					],
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "_url",
+			"value": "http://localhost/koperasi_yansen",
+			"type": "string"
+		}
+	]
+}
